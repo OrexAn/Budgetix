@@ -1,117 +1,72 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Privacy Policy — Budgetix</title>
-  <meta name="description" content="Privacy Policy for Budgetix mobile application.">
-  <meta name="robots" content="index,follow">
-  <meta property="og:title" content="Privacy Policy — Budgetix">
-  <meta property="og:description" content="Privacy Policy for Budgetix mobile application.">
-  <meta property="og:type" content="website">
+  <meta name="description" content="Privacy Policy for the Budgetix mobile application." />
+  <!-- Tailwind (stand‑alone, production‑ready) -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <!-- Sofia Sans font for brand consistency -->
+  <link href="https://fonts.googleapis.com/css2?family=Sofia+Sans:wght@400;600&display=swap" rel="stylesheet" />
   <style>
-    :root {
-      --bg: #0b0f14;
-      --card: #121823;
-      --text: #e7eef7;
-      --muted: #a9b7c6;
-      --accent: #5da9ff;
-      --border: #1e2a3a;
+    body { font-family: 'Sofia Sans', system-ui, sans-serif; }
+    .bg-brand-gradient {
+      background: linear-gradient(135deg, #0f172a 0%, #334155 100%);
     }
-    * { box-sizing: border-box; }
-    html, body { margin: 0; padding: 0; }
-    body {
-      background: linear-gradient(180deg, var(--bg), #0d141c 60%, #0b0f14);
-      color: var(--text);
-      font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-      display: flex;
-      min-height: 100dvh;
-      justify-content: center;
-    }
-    main {
-      width: 100%;
-      max-width: 920px;
-      padding: 32px 20px 64px;
-    }
-    .card {
-      background: rgba(18, 24, 35, .9);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      box-shadow: 0 10px 30px rgba(0,0,0,.35);
-      overflow: hidden;
-    }
-    header {
-      padding: 28px 24px;
-      border-bottom: 1px solid var(--border);
-      background: radial-gradient(1200px 300px at 30% -50%, rgba(93,169,255,.15), transparent 60%);
-    }
-    h1 {
-      margin: 0 0 6px 0;
-      font-size: clamp(24px, 4vw, 36px);
-      letter-spacing: .3px;
-    }
-    .sub { color: var(--muted); font-size: 14px; }
-    section { padding: 18px 24px; }
-    h2 { font-size: 20px; margin: 18px 0 6px; }
-    p, li { color: var(--text); }
-    a { color: var(--accent); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    footer {
-      padding: 18px 24px 26px;
-      color: var(--muted);
-      border-top: 1px solid var(--border);
-      font-size: 14px;
-      background: rgba(10,14,20,.35);
-    }
-    .muted { color: var(--muted); }
+    .accent { color: #ff7d00; }
+    .bg-card { background: rgba(255,255,255,0.03); }
   </style>
 </head>
-<body>
-  <main>
-    <div class="card">
-      <header>
-        <h1>Privacy Policy</h1>
-        <div class="sub">for <strong>Budgetix</strong> · Last updated: August 15, 2025</div>
-      </header>
+<body class="bg-brand-gradient text-gray-100 antialiased min-h-screen flex items-start justify-center py-10 px-4">
+  <main class="w-full max-w-4xl bg-card backdrop-blur border border-white/10 rounded-2xl shadow-2xl">
+    <!-- Header -->
+    <header class="px-8 py-10 border-b border-white/10">
+      <h1 class="text-4xl font-semibold mb-1">Privacy Policy <span class="accent" href="https://orexan.github.io/Budgetix/">Budgetix</span></h1>
+      <p class="text-sm text-gray-400">Last updated: <time datetime="2025-08-15">August&nbsp;15,&nbsp;2025</time></p>
+    </header>
 
+    <!-- Sections wrapper -->
+    <div class="space-y-10 px-8 py-12 leading-relaxed">
       <section>
         <p><strong>Budgetix</strong> respects your privacy rights. We do not collect, store, or share personal information except as described in this policy.</p>
       </section>
 
       <section>
-        <h2>1. Information Collection and Use</h2>
+        <h2 class="text-2xl font-semibold mb-3 accent">1. Information Collection and Use</h2>
         <p>The app does not collect or transmit personal data to external servers. All data you enter (such as expenses, income, categories, and notes) is stored <strong>locally</strong> on your device.</p>
       </section>
 
       <section>
-        <h2>2. Data Access and Sharing</h2>
+        <h2 class="text-2xl font-semibold mb-3 accent">2. Data Access and Sharing</h2>
         <p>The app does not share your data with third parties. We do not use advertising networks or analytics services that collect user information.</p>
       </section>
 
       <section>
-        <h2>3. Permissions</h2>
+        <h2 class="text-2xl font-semibold mb-3 accent">3. Permissions</h2>
         <p>The app may request access to device storage solely to save and restore your local data. Such data never leaves your device.</p>
       </section>
 
       <section>
-        <h2>4. Security</h2>
+        <h2 class="text-2xl font-semibold mb-3 accent">4. Security</h2>
         <p>We take reasonable measures to protect your information. However, we recommend that you regularly back up your data to avoid accidental loss.</p>
       </section>
 
       <section>
-        <h2>5. Changes to This Policy</h2>
+        <h2 class="text-2xl font-semibold mb-3 accent">5. Changes to This Policy</h2>
         <p>We may update this Privacy Policy from time to time. Any changes will be posted in this document and are effective immediately upon posting.</p>
       </section>
 
       <section>
-        <h2>6. Contact Us</h2>
-        <p>If you have questions about this Privacy Policy, contact us at <a href="mailto:projecthogo@gmail.com">projecthogo@gmail.com</a>.</p>
+        <h2 class="text-2xl font-semibold mb-3 accent">6. Contact Us</h2>
+        <p>If you have questions about this Privacy Policy, reach out to us at <a href="mailto:projecthogo@gmail.com" class="underline hover:text-white">projecthogo@gmail.com</a>.</p>
       </section>
-
-      <footer>
-        <span class="muted">© 2025 Budgetix. All rights reserved.</span>
-      </footer>
     </div>
+
+    <!-- Footer -->
+    <footer class="text-center border-t border-white/10 py-6 text-sm text-gray-400">
+      © 2025 Budgetix. All rights reserved.
+    </footer>
   </main>
 </body>
 </html>
