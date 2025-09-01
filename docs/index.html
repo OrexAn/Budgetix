@@ -1,95 +1,226 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Budgetix – Your Agile Personal Finance Toolkit</title>
-    <!-- Tailwind CDN for quick styling -->
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
-    <!-- Sofia Sans font -->
-    <link href="https://fonts.googleapis.com/css2?family=Sofia+Sans:wght@400;600&display=swap" rel="stylesheet" />
-    <style>
-        body { font-family: 'Sofia Sans', sans-serif; }
-        .bg-gradient { background: linear-gradient(135deg, #0f172a 0%, #334155 100%); }
-        .accent { color: #ff7d00; }
-        .bg-accent { background-color: #ff7d00; }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Budgetix — Your Agile Personal Finance Toolkit</title>
+  <meta name="description" content="Build custom finance cards, track multi‑currency balances, and keep full control of your money with Budgetix — private, flexible, and offline‑friendly." />
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:title" content="Budgetix — Your Agile Personal Finance Toolkit" />
+  <meta property="og:description" content="Custom cards, multi‑currency, instant archive. Private by design." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="images/cover.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Tailwind CDN (v2 for compatibility) -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <!-- Sofia Sans font -->
+  <link href="https://fonts.googleapis.com/css2?family=Sofia+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root { --accent:#F59E0B; /* amber-500 */ --accent-2:#FBBF24; }
+    html { scroll-behavior:smooth; }
+    body { font-family:'Sofia Sans',system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif; }
+    .bg-gradient { background: radial-gradient(1200px 600px at 10% -10%, rgba(245,158,11,.25), transparent 60%), linear-gradient(135deg,#0f172a 0%,#334155 100%); }
+    .accent { color: var(--accent); }
+
+    /* --- BUTTON SYSTEM (no Tailwind @apply; pure CSS so it works from CDN) --- */
+    .btn { 
+      display:inline-flex; align-items:center; justify-content:center; gap:.5rem; 
+      padding:.9rem 1.25rem; border-radius:9999px; font-weight:700; 
+      letter-spacing:.2px; text-decoration:none; position:relative; overflow:hidden;
+      transition: transform .2s ease, box-shadow .2s ease, filter .2s ease, background .2s ease;
+      will-change: transform, box-shadow; outline: none;
+    }
+    .btn:focus-visible { box-shadow: 0 0 0 3px rgba(255,255,255,.25), 0 0 0 6px rgba(245,158,11,.55); }
+
+    /* Shimmer highlight */
+    .btn::before {
+      content:""; position:absolute; inset:0; pointer-events:none; 
+      background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,.18) 35%, transparent 70%);
+      transform: translateX(-120%);
+      transition: transform .6s ease;
+    }
+    .btn:hover::before { transform: translateX(120%); }
+
+    .btn-primary {
+      color:#111827;
+      background: linear-gradient(180deg, var(--accent-2) 0%, var(--accent) 100%);
+      border: 1px solid rgba(0,0,0,.08);
+      box-shadow: 0 10px 25px rgba(245,158,11,.35), 0 0 0 2px rgba(245,158,11,.35) inset;
+    }
+    .btn-primary:hover { filter:saturate(1.12); transform: translateY(-2px) scale(1.02); }
+    .btn-primary:active { transform: translateY(0); box-shadow: 0 4px 12px rgba(245,158,11,.35), 0 0 0 2px rgba(0,0,0,.2) inset; }
+
+    .btn-secondary { 
+      color:var(--accent); background: rgba(255,255,255,.06);
+      border: 2px solid transparent; 
+      background-image: linear-gradient(rgba(255,255,255,.06), rgba(255,255,255,.06)), 
+                        linear-gradient(135deg, rgba(245,158,11,.8), rgba(251,191,36,.8));
+      background-origin: border-box; background-clip: padding-box, border-box; 
+      backdrop-filter: blur(6px);
+      box-shadow: 0 8px 24px rgba(0,0,0,.25);
+    }
+    .btn-secondary:hover { transform: translateY(-1px); box-shadow: 0 10px 28px rgba(0,0,0,.32); }
+    .btn-secondary:active { transform: translateY(0); }
+
+    /* Ghost button for header if needed later */
+    .btn-ghost { color:#E5E7EB; border:1px solid rgba(229,231,235,.2); background: rgba(255,255,255,.04); }
+    .btn-ghost:hover { background: rgba(255,255,255,.08); transform: translateY(-1px); }
+
+    .glass { background: rgba(255,255,255,.06); backdrop-filter: blur(6px); }
+    .shadow-soft { box-shadow: 0 10px 30px rgba(0,0,0,.25); }
+
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior:auto; } .btn{transition:none;} .btn::before{display:none;} }
+  </style>
 </head>
 <body class="bg-gradient text-gray-100 antialiased">
-    <!-- Header -->
-    <header class="container mx-auto flex justify-between items-center py-6 px-4">
-        <h1 class="text-3xl font-semibold tracking-wide"><span class="accent">Budgetix</span></h1>
-        <nav class="space-x-6 hidden sm:flex">
-            <a href="#features" class="hover:text-white">Features</a>
-            <a href="#screens" class="hover:text-white">Screenshots</a>
-            <a href="#download" class="hover:text-white">Download</a>
-            <a href="#contact" class="hover:text-white">Contact</a>
-            <a href="https://orexan.github.io/Budgetix/privacy-policy.html" class="hover:text-white">Privacy Policy</a>
-        </nav>
-        <a href="https://play.google.com/store/apps/details?id=com.hogo.budgetix" class="bg-accent text-gray-900 font-semibold px-5 py-2 rounded-full shadow hover:opacity-90 transition">Get the App</a>
-    </header>
 
+  <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:bg-white focus:text-gray-900 focus:px-3 focus:py-2 focus:rounded">Skip to content</a>
+
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-black bg-opacity-30 backdrop-filter backdrop-blur border-b border-white border-opacity-10">
+    <div class="container mx-auto flex items-center justify-between px-4 py-4">
+      <a href="#" class="text-2xl sm:text-3xl font-bold tracking-wide" aria-label="Budgetix home"><span class="accent">Budgetix</span></a>
+      <nav class="hidden md:flex items-center space-x-6" aria-label="Primary">
+        <a href="#features" class="hover:text-white">Features</a>
+        <a href="#how" class="hover:text-white">How it works</a>
+        <a href="#screens" class="hover:text-white">Screens</a>
+        <a href="#faq" class="hover:text-white">FAQ</a>
+        <a href="https://orexan.github.io/Budgetix/privacy-policy.html" class="hover:text-white">Privacy</a>
+      </nav>
+      <a href="https://play.google.com/store/apps/details?id=com.hogo.budgetix" class="btn btn-primary" aria-label="Get Budgetix on Google Play"><span>Get the App</span></a>
+    </div>
+  </header>
+
+  <main id="main">
     <!-- Hero -->
-    <section class="container mx-auto px-4 text-center py-20">
-        <h2 class="text-4xl sm:text-5xl font-bold mb-4">Master Your Money Flow<br /><span class="accent">With Budgetix</span></h2>
-        <p class="text-lg sm:text-xl max-w-xl mx-auto mb-8 text-gray-300">Build custom finance cards, track multi‑currency balances, and stay ahead with a flexible rule system—designed for power users yet friendly for beginners.</p>
-        <a href="#download" class="bg-accent text-gray-900 font-semibold px-8 py-3 rounded-full text-lg shadow-lg hover:opacity-90 transition">Start Tracking Today</a>
+    <section class="container mx-auto px-4 py-16 sm:py-24 text-center">
+      <p class="uppercase tracking-widest text-xs sm:text-sm text-gray-300">Private • Offline • Multi‑currency</p>
+      <h1 class="mt-3 text-4xl sm:text-6xl font-extrabold leading-tight">Master your money flow with <span class="accent">Budgetix</span></h1>
+      <p class="mt-5 max-w-2xl mx-auto text-lg sm:text-xl text-gray-300">Build custom <strong>cards</strong>, define rules, and see your balance update instantly. Power‑user flexibility that still feels simple on day one.</p>
+      <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.hogo.budgetix"><span>Download on Google Play</span></a>
+        <a class="btn btn-primary" href="#features"><span>Explore Features</span></a>
+      </div>
+      <div class="mt-8 text-sm text-gray-400">No sign‑up • Data stays on your device • Dark‑mode first</div>
     </section>
 
     <!-- Features -->
-    <section id="features" class="container mx-auto px-4 py-16">
-        <h3 class="text-3xl font-semibold text-center mb-12">Key Features</h3>
-        <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
-            <div class="bg-white/5 backdrop-blur p-6 rounded-2xl shadow-lg">
-                <h4 class="text-xl font-semibold mb-2 accent">Modular Cards</h4>
-                <p>Create unlimited “cards” with custom operations (sum, subtract, multiply, divide) and categories.</p>
-            </div>
-            <div class="bg-white/5 backdrop-blur p-6 rounded-2xl shadow-lg">
-                <h4 class="text-xl font-semibold mb-2 accent">Multi‑Currency</h4>
-                <p>Track exchange rates and balance conversions effortlessly.</p>
-            </div>
-            <div class="bg-white/5 backdrop-blur p-6 rounded-2xl shadow-lg">
-                <h4 class="text-xl font-semibold mb-2 accent">Instant Archive</h4>
-                <p>One‑tap modal history with roll‑ups of all your financial actions.</p>
-            </div>
-            <div class="bg-white/5 backdrop-blur p-6 rounded-2xl shadow-lg">
-                <h4 class="text-xl font-semibold mb-2 accent">Deep Customization</h4>
-                <p>Define your own top‑level categories, sub‑categories & formulas.</p>
-            </div>
-            <div class="bg-white/5 backdrop-blur p-6 rounded-2xl shadow-lg">
-                <h4 class="text-xl font-semibold mb-2 accent">Data Privacy</h4>
-                <p>All data stored locally—your finances stay on your device.</p>
-            </div>
-            <div class="bg-white/5 backdrop-blur p-6 rounded-2xl shadow-lg">
-                <h4 class="text-xl font-semibold mb-2 accent">Dark‑Mode First</h4>
-                <p>Beautiful AMOLED‑ready palette that saves your eyes and battery.</p>
-            </div>
+    <section id="features" class="container mx-auto px-4 py-14">
+      <h2 class="text-3xl sm:text-4xl font-bold text-center">What makes Budgetix different</h2>
+      <p class="mt-3 text-center text-gray-300">Your budget, your rules — without cloud lock‑in.</p>
+      <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <article class="glass rounded-2xl p-6 shadow-soft">
+          <h3 class="text-xl font-semibold accent">Modular cards</h3>
+          <p class="mt-2 text-gray-200">Create cards that combine an initial amount with category lists using sum, subtract, multiply, or divide.</p>
+        </article>
+        <article class="glass rounded-2xl p-6 shadow-soft">
+          <h3 class="text-xl font-semibold accent">Multi‑currency</h3>
+          <p class="mt-2 text-gray-200">Track exchange rates and convert balances on the fly. Works offline.</p>
+        </article>
+        <article class="glass rounded-2xl p-6 shadow-soft">
+          <h3 class="text-xl font-semibold accent">Instant archive</h3>
+          <p class="mt-2 text-gray-200">A single tap opens history with per‑card roll‑ups and totals.</p>
+        </article>
+        <article class="glass rounded-2xl p-6 shadow-soft">
+          <h3 class="text-xl font-semibold accent">Deep customization</h3>
+          <p class="mt-2 text-gray-200">Define your own top‑level categories, sub‑categories, and formulas.</p>
+        </article>
+        <article class="glass rounded-2xl p-6 shadow-soft">
+          <h3 class="text-xl font-semibold accent">Private by design</h3>
+          <p class="mt-2 text-gray-200">All data is stored locally on your device. No accounts. No ads.</p>
+        </article>
+        <article class="glass rounded-2xl p-6 shadow-soft">
+          <h3 class="text-xl font-semibold accent">Dark‑mode first</h3>
+          <p class="mt-2 text-gray-200">AMOLED‑friendly palette that’s easy on your eyes and your battery.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section id="how" class="container mx-auto px-4 py-14">
+      <h2 class="text-3xl sm:text-4xl font-bold text-center">Get started in 3 simple steps</h2>
+      <div class="mt-10 grid gap-6 sm:grid-cols-3">
+        <div class="glass rounded-2xl p-6">
+          <div class="text-4xl font-extrabold accent">1</div>
+          <h3 class="mt-2 text-xl font-semibold">Create a category</h3>
+          <p class="mt-1 text-gray-200">Name your goal or envelope (e.g., Groceries, Savings).</p>
         </div>
+        <div class="glass rounded-2xl p-6">
+          <div class="text-4xl font-extrabold accent">2</div>
+          <h3 class="mt-2 text-xl font-semibold">Add a card</h3>
+          <p class="mt-1 text-gray-200">Choose the operation and list of sub‑categories that affect the balance.</p>
+        </div>
+        <div class="glass rounded-2xl p-6">
+          <div class="text-4xl font-extrabold accent">3</div>
+          <h3 class="mt-2 text-xl font-semibold">Track & adjust</h3>
+          <p class="mt-1 text-gray-200">See real‑time results and tweak rules any time.</p>
+        </div>
+      </div>
     </section>
 
     <!-- Screenshots -->
-    <section id="screens" class="container mx-auto px-4 py-16">
-        <h3 class="text-3xl font-semibold text-center mb-12">App Sneak Peek</h3>
-        <div class="flex flex-wrap justify-center gap-8">
-            <img src="images/screen1.png" alt="Budgetix home screen" class="w-72 rounded-2xl shadow-lg" />
-            <img src="images/screen2.png" alt="Create card screen" class="w-72 rounded-2xl shadow-lg" />
-            <img src="images/screen3.png" alt="Archive modal" class="w-72 rounded-2xl shadow-lg" />
-        </div>
+    <section id="screens" class="container mx-auto px-4 py-14">
+      <h2 class="text-3xl sm:text-4xl font-bold text-center">A quick peek inside</h2>
+      <div class="mt-10 flex flex-wrap items-start justify-center gap-6">
+        <figure class="w-72 glass rounded-2xl p-3 shadow-soft">
+          <img src="images/screen1.png" alt="Budgetix home screen with categories and balance" class="rounded-xl"/>
+          <figcaption class="mt-3 text-sm text-gray-300 text-center">Home — categories & balance</figcaption>
+        </figure>
+        <figure class="w-72 glass rounded-2xl p-3 shadow-soft">
+          <img src="images/screen2.png" alt="Create card screen" class="rounded-xl"/>
+          <figcaption class="mt-3 text-sm text-gray-300 text-center">Create card — rules & preview</figcaption>
+        </figure>
+        <figure class="w-72 glass rounded-2xl p-3 shadow-soft">
+          <img src="images/screen3.png" alt="Archive modal with history" class="rounded-xl"/>
+          <figcaption class="mt-3 text-sm text-gray-300 text-center">Archive — quick history</figcaption>
+        </figure>
+      </div>
     </section>
 
-    <!-- Download -->
+    <!-- FAQ -->
+    <section id="faq" class="container mx-auto px-4 py-14">
+      <h2 class="text-3xl sm:text-4xl font-bold text-center">FAQ</h2>
+      <div class="mt-8 max-w-3xl mx-auto space-y-4">
+        <details class="glass rounded-xl p-4">
+          <summary class="font-semibold cursor-pointer">Do I need an account?</summary>
+          <p class="mt-2 text-gray-200">No. Budgetix works entirely offline and stores data on your device.</p>
+        </details>
+        <details class="glass rounded-xl p-4">
+          <summary class="font-semibold cursor-pointer">Can I use multiple currencies?</summary>
+          <p class="mt-2 text-gray-200">Yes. Set an exchange rate per card and track results per category.</p>
+        </details>
+        <details class="glass rounded-xl p-4">
+          <summary class="font-semibold cursor-pointer">Is my data private?</summary>
+          <p class="mt-2 text-gray-200">Absolutely. We don’t collect personal data. See our <a class="underline" href="https://orexan.github.io/Budgetix/privacy-policy.html">Privacy Policy</a>.</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- Download CTA -->
     <section id="download" class="container mx-auto px-4 py-20 text-center">
-        <h3 class="text-3xl font-semibold mb-6">Ready to take control?</h3>
-        <p class="max-w-lg mx-auto mb-8 text-gray-300">Join thousands of power users who already upgraded their money game. Budgetix is free, works offline, and respects your privacy.</p>
-        <a href="https://play.google.com/store/apps/details?id=com.hogo.budgetix" class="bg-accent text-gray-900 font-semibold px-10 py-4 rounded-full text-lg shadow-lg hover:opacity-90 transition">Download on Google Play</a>
+      <h2 class="text-3xl sm:text-4xl font-bold">Ready to take control?</h2>
+      <p class="mt-3 max-w-2xl mx-auto text-gray-300">Join power users who already upgraded their money game. Budgetix is free, works offline, and respects your privacy.</p>
+      <a href="https://play.google.com/store/apps/details?id=com.hogo.budgetix" class="mt-8 btn btn-primary"><span>Download on Google Play</span></a>
     </section>
+  </main>
 
-    <!-- Footer -->
-    <footer id="contact" class="border-t border-white/10 py-8">
-        <div class="container mx-auto px-4 text-center">
-            <p>&copy; 2025 Budgetix. All rights reserved.</p>
-            <p class="mt-2"><a href="mailto:projecthogo@gmail.com" class="underline hover:text-white">projecthogo@gmail.com</a></p>
-        </div>
-    </footer>
+  <!-- Footer -->
+  <footer class="border-t border-white border-opacity-10">
+    <div class="container mx-auto px-4 py-10 text-center">
+      <nav class="text-sm space-x-4">
+        <a href="#features" class="hover:text-white">Features</a>
+        <a href="#how" class="hover:text-white">How it works</a>
+        <a href="#screens" class="hover:text-white">Screens</a>
+        <a href="#faq" class="hover:text-white">FAQ</a>
+        <a href="https://orexan.github.io/Budgetix/privacy-policy.html" class="hover:text-white">Privacy</a>
+      </nav>
+      <p class="mt-4">&copy; 2025 Budgetix. All rights reserved.</p>
+      <p class="mt-1"><a href="mailto:projecthogo@gmail.com" class="underline">projecthogo@gmail.com</a></p>
+    </div>
+  </footer>
+
 </body>
 </html>
