@@ -4,7 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Budgetix — Your Agile Personal Finance Toolkit</title>
-  <meta name="description" content="Build custom finance cards, track multi‑currency balances, and keep full control of your money with Budgetix — private, flexible, and offline‑friendly." />
+  <meta name="description" content="Budgetix — flexible personal finance app. Create custom cards, track income & expenses, multi-currency, offline-first, private by design (no accounts, no trackers).">
+
 
   <!-- Open Graph / Twitter -->
   <meta property="og:title" content="Budgetix — Your Agile Personal Finance Toolkit" />
@@ -12,6 +13,12 @@
   <meta property="og:type" content="website" />
   <meta property="og:image" content="images/cover.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
+  
+  <!-- Favicon -->
+	<link rel="icon" type="image/png" sizes="32x32" href="images/favicon.png">
+	<link rel="icon" type="image/png" sizes="192x192" href="images/favicon.png">
+	<link rel="apple-touch-icon" href="images/favicon.png">
+	<link rel="shortcut icon" href="images/favicon.ico">
 
   <!-- Tailwind CDN (v2 for compatibility) -->
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
@@ -97,28 +104,29 @@
   <main id="main">
     <!-- Hero -->
     <section class="container mx-auto px-4 py-16 sm:py-24 text-center">
-      <p class="uppercase tracking-widest text-xs sm:text-sm text-gray-300">Private • Offline • Multi‑currency</p>
+      <p class="uppercase tracking-widest text-xs sm:text-sm text-gray-300">Private • Offline • Fully customizable</p>
       <h1 class="mt-3 text-4xl sm:text-6xl font-extrabold leading-tight">Master your money flow with <span class="accent">Budgetix</span></h1>
-      <p class="mt-5 max-w-2xl mx-auto text-lg sm:text-xl text-gray-300">Build custom <strong>cards</strong>, define rules, and see your balance update instantly. Power‑user flexibility that still feels simple on day one.</p>
+      <p class="mt-5 max-w-2xl mx-auto text-lg sm:text-xl text-gray-300">Build custom <strong>cards</strong>, define rules, and preview results instantly. Power-user flexibility that stays simple from day one.
+	</p>
       <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
         <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.hogo.budgetix"><span>Download on Google Play</span></a>
         <a class="btn btn-primary" href="#features"><span>Explore Features</span></a>
       </div>
-      <div class="mt-8 text-sm text-gray-400">No sign‑up • Data stays on your device • Dark‑mode first</div>
+      <div class="mt-8 text-sm text-gray-400">No sign-up • Data stays on your device • No ads or trackers</div>
     </section>
 
     <!-- Features -->
     <section id="features" class="container mx-auto px-4 py-14">
       <h2 class="text-3xl sm:text-4xl font-bold text-center">What makes Budgetix different</h2>
-      <p class="mt-3 text-center text-gray-300">Your budget, your rules — without cloud lock‑in.</p>
+      <p class="mt-3 text-center text-gray-300">Your budget, your rules — no accounts, no trackers, no cloud lock-in.</p>
       <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         <article class="glass rounded-2xl p-6 shadow-soft">
           <h3 class="text-xl font-semibold accent">Modular cards</h3>
-          <p class="mt-2 text-gray-200">Create cards that combine an initial amount with category lists using sum, subtract, multiply, or divide.</p>
+          <p class="mt-2 text-gray-200">Create cards that combine an initial amount with category lists and operations — with instant previews before you save.</p>
         </article>
         <article class="glass rounded-2xl p-6 shadow-soft">
           <h3 class="text-xl font-semibold accent">Multi‑currency</h3>
-          <p class="mt-2 text-gray-200">Track exchange rates and convert balances on the fly. Works offline.</p>
+          <p class="mt-2 text-gray-200">Track multiple currencies and convert balances on the fly. Enter custom rates — works fully offline.</p>
         </article>
         <article class="glass rounded-2xl p-6 shadow-soft">
           <h3 class="text-xl font-semibold accent">Instant archive</h3>
@@ -130,7 +138,7 @@
         </article>
         <article class="glass rounded-2xl p-6 shadow-soft">
           <h3 class="text-xl font-semibold accent">Private by design</h3>
-          <p class="mt-2 text-gray-200">All data is stored locally on your device. No accounts. No ads.</p>
+          <p class="mt-2 text-gray-200">All data stays on your device. No accounts. No ads. No trackers.</p>
         </article>
         <article class="glass rounded-2xl p-6 shadow-soft">
           <h3 class="text-xl font-semibold accent">Dark‑mode first</h3>
@@ -166,15 +174,15 @@
       <h2 class="text-3xl sm:text-4xl font-bold text-center">A quick peek inside</h2>
       <div class="mt-10 flex flex-wrap items-start justify-center gap-6">
         <figure class="w-72 glass rounded-2xl p-3 shadow-soft">
-          <img src="images/screen1.png" alt="Budgetix home screen with categories and balance" class="rounded-xl"/>
+          <img src="images/home.png" alt="Budgetix home screen with categories and balance" class="rounded-xl"/>
           <figcaption class="mt-3 text-sm text-gray-300 text-center">Home — categories & balance</figcaption>
         </figure>
         <figure class="w-72 glass rounded-2xl p-3 shadow-soft">
-          <img src="images/screen2.png" alt="Create card screen" class="rounded-xl"/>
+          <img src="images/create_card.png" alt="Create card screen" class="rounded-xl"/>
           <figcaption class="mt-3 text-sm text-gray-300 text-center">Create card — rules & preview</figcaption>
         </figure>
         <figure class="w-72 glass rounded-2xl p-3 shadow-soft">
-          <img src="images/screen3.png" alt="Archive modal with history" class="rounded-xl"/>
+          <img src="images/history.png" alt="Archive modal with history" class="rounded-xl"/>
           <figcaption class="mt-3 text-sm text-gray-300 text-center">Archive — quick history</figcaption>
         </figure>
       </div>
@@ -186,15 +194,15 @@
       <div class="mt-8 max-w-3xl mx-auto space-y-4">
         <details class="glass rounded-xl p-4">
           <summary class="font-semibold cursor-pointer">Do I need an account?</summary>
-          <p class="mt-2 text-gray-200">No. Budgetix works entirely offline and stores data on your device.</p>
+          <p class="mt-2 text-gray-200">No. Budgetix works fully offline and stores all data on your device — your finances stay yours.</p>
         </details>
         <details class="glass rounded-xl p-4">
           <summary class="font-semibold cursor-pointer">Can I use multiple currencies?</summary>
-          <p class="mt-2 text-gray-200">Yes. Set an exchange rate per card and track results per category.</p>
+          <p class="mt-2 text-gray-200">Yes. Set per-card exchange rates, track results per category, and adjust rates manually when offline.</p>
         </details>
         <details class="glass rounded-xl p-4">
           <summary class="font-semibold cursor-pointer">Is my data private?</summary>
-          <p class="mt-2 text-gray-200">Absolutely. We don’t collect personal data. See our <a class="underline" href="https://orexan.github.io/Budgetix/privacy-policy.html">Privacy Policy</a>.</p>
+          <p class="mt-2 text-gray-200">Yes. We don’t collect personal data, run ads, or use trackers. See our <a class="underline" href="https://orexan.github.io/Budgetix/privacy-policy.html">Privacy Policy</a>.</p>
         </details>
       </div>
     </section>
@@ -202,7 +210,7 @@
     <!-- Download CTA -->
     <section id="download" class="container mx-auto px-4 py-20 text-center">
       <h2 class="text-3xl sm:text-4xl font-bold">Ready to take control?</h2>
-      <p class="mt-3 max-w-2xl mx-auto text-gray-300">Join power users who already upgraded their money game. Budgetix is free, works offline, and respects your privacy.</p>
+      <p class="mt-3 max-w-2xl mx-auto text-gray-300">Join power users who already upgraded their money game. Budgetix is free to try, offline-first, and built to respect your privacy.</p>
       <a href="https://play.google.com/store/apps/details?id=com.hogo.budgetix" class="mt-8 btn btn-primary"><span>Download on Google Play</span></a>
     </section>
   </main>
