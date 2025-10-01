@@ -14,6 +14,8 @@
   <meta property="og:image" content="images/cover.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
   
+  <script src="assets/js/share.js" defer></script>
+  
   <!-- Favicon -->
 	<link rel="icon" type="image/png" sizes="32x32" href="images/favicon.png">
 	<link rel="icon" type="image/png" sizes="192x192" href="images/favicon.png">
@@ -80,6 +82,60 @@
     .shadow-soft { box-shadow: 0 10px 30px rgba(0,0,0,.25); }
 
     @media (prefers-reduced-motion: reduce) { html { scroll-behavior:auto; } .btn{transition:none;} .btn::before{display:none;} }
+	
+	/* Brand share buttons */
+	#share-x.btn,
+	#share-tg.btn,
+	#share-wa.btn,
+	#share-fb.btn,
+	#share-mail.btn,
+	#share-copy.btn {
+	  color: #fff;                 /* контрастный текст */
+	  border-color: transparent;   /* без обводки (можно убрать) */
+	}
+
+	/* X (Twitter) */
+	#share-x.btn       { background: #000000; }
+	#share-x.btn:hover,
+	#share-x.btn:focus { background: #111214; }
+
+	/* Telegram */
+	#share-tg.btn       { background: #229ED9; }
+	#share-tg.btn:hover,
+	#share-tg.btn:focus { background: #1c89bd; }
+
+	/* WhatsApp */
+	#share-wa.btn       { background: #25D366; }
+	#share-wa.btn:hover,
+	#share-wa.btn:focus { background: #1fb357; }
+
+	/* Facebook */
+	#share-fb.btn       { background: #1877F2; }
+	#share-fb.btn:hover,
+	#share-fb.btn:focus { background: #1464cc; }
+
+	/* Email — нейтральный тёмно-серый */
+	#share-mail.btn       { background: #5f6368; }
+	#share-mail.btn:hover,
+	#share-mail.btn:focus { background: #4c5054; }
+
+	/* Copy link — такой же нейтральный */
+	#share-copy.btn       { background: #5f6368; }
+	#share-copy.btn:hover,
+	#share-copy.btn:focus { background: #4c5054; }
+
+	/* На всякий случай — состояние disabled */
+	#share-x.btn:disabled,
+	#share-tg.btn:disabled,
+	#share-wa.btn:disabled,
+	#share-fb.btn:disabled,
+	#share-mail.btn:disabled,
+	#share-copy.btn:disabled {
+	  opacity: .6;
+	  cursor: not-allowed;
+	}
+	
+	#share .btn { border-radius: 9999px; padding: .5rem 1rem; }
   </style>
 </head>
 <body class="bg-gradient text-gray-100 antialiased">
@@ -214,6 +270,40 @@
       <a href="https://play.google.com/store/apps/details?id=com.hogo.budgetix" class="mt-8 btn btn-primary"><span>Download on Google Play</span></a>
     </section>
   </main>
+  
+  <!-- Share -->
+	<section id="share" class="container mx-auto px-4 py-10 text-center">
+	  <h2 class="text-2xl sm:text-3xl font-bold">Share Budgetix</h2>
+	  <p class="mt-2 text-gray-300">Tell a friend — it really helps the project grow.</p>
+
+	  <div class="mt-6 flex flex-wrap items-center justify-center gap-3">
+		<button id="share-native" type="button" class="btn btn-primary" aria-label="Share via native dialog">
+		  <span>Share</span>
+		</button>
+
+		<a id="share-x" class="btn btn-secondary" target="_blank" rel="noopener" aria-label="Share on X (Twitter)">
+		  <span>X</span>
+		</a>
+		<a id="share-tg" class="btn btn-secondary" target="_blank" rel="noopener" aria-label="Share on Telegram">
+		  <span>Telegram</span>
+		</a>
+		<a id="share-wa" class="btn btn-secondary" target="_blank" rel="noopener" aria-label="Share on WhatsApp">
+		  <span>WhatsApp</span>
+		</a>
+		<a id="share-fb" class="btn btn-secondary" target="_blank" rel="noopener" aria-label="Share on Facebook">
+		  <span>Facebook</span>
+		</a>
+		<a id="share-mail" class="btn btn-secondary" aria-label="Share via Email">
+		  <span>Email</span>
+		</a>
+
+		<button id="share-copy" type="button" class="btn btn-secondary" aria-label="Copy link">
+		  <span>Copy link</span>
+		</button>
+	  </div>
+
+	  <p id="share-toast" class="mt-3 text-sm text-gray-300" style="display:none;">Link copied ✔</p>
+	</section>
 
   <!-- Footer -->
   <footer class="border-t border-white border-opacity-10">
